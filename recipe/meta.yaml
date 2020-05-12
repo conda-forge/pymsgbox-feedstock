@@ -1,4 +1,4 @@
-{% set version = "1.0.7" %}
+{% set version = "1.0.8" %}
 
 package:
   name: pymsgbox
@@ -7,12 +7,12 @@ package:
 source:
   fn: PyMsgBox-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/P/PyMsgBox/PyMsgBox-{{ version }}.tar.gz
-  sha256: 7df5ed66c8a80fd36b83b278ba164e7a1d135c8fb8bdf38b291e46bf31d28085
+  sha256: 8e088903a3b1e4f46edd3b23cccf20609d0d06e52d559056482a6e8b75f0dc1a
 
 build:
   number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
