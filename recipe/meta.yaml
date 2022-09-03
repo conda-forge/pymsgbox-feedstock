@@ -1,37 +1,42 @@
+{% set name = "pymsgbox" %}
 {% set version = "1.0.9" %}
 
 package:
-  name: pymsgbox
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: PyMsgBox-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/P/PyMsgBox/PyMsgBox-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/PyMsgBox-{{ version }}.tar.gz
   sha256: 2194227de8bff7a3d6da541848705a155dcbb2a06ee120d9f280a1d7f51263ff
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 1
 
 requirements:
   build:
-    - python
-    - setuptools
     - pip
+    - python >=3.4
   run:
-    - python
+    - python >=3.4
 
 test:
   imports:
     - pymsgbox
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/asweigart/PyMsgBox
-  license: BSD 3-Clause
-  license_family: BSD
+  license: BSD-3-Clause
   summary: A simple, cross-platform, pure Python module for JavaScript-like message boxes.
+  license_file:
+    - LICENSE.txt
 
 extra:
   recipe-maintainers:
     - jschueller
+    - thewchan
