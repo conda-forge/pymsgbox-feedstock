@@ -1,18 +1,18 @@
 {% set name = "pymsgbox" %}
-{% set version = "1.0.9" %}
+{% set version = "2.0.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/PyMsgBox-{{ version }}.tar.gz
-  sha256: 2194227de8bff7a3d6da541848705a155dcbb2a06ee120d9f280a1d7f51263ff
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 98d055c49a511dcc10fa08c3043e7102d468f5e4b3a83c6d3c61df722c7d798d
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 3
+  number: 0
 
 requirements:
   host:
